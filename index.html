@@ -1,7 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de Boda</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background: #f5f5f5; color: #333; }
+    h1 { font-size: 3rem; margin-top: 20px; }
+    #countdown { font-size: 2rem; margin-top: 20px; }
+  </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <h1>¡Nos Casamos!</h1>
+  <p>Quedan:</p>
+  <div id="countdown"></div>
+  <p>para nuestra boda el <strong>15 de diciembre de 2024</strong></p>
+
+  <script>
+    function updateCountdown() {
+      const weddingDate = new Date("2024-12-15T00:00:00").getTime();
+      const now = new Date().getTime();
+      const difference = weddingDate - now;
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
